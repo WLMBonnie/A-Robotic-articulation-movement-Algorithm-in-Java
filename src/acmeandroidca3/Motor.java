@@ -54,7 +54,7 @@ public class Motor {
 
         if(Battery.isDischargable(this.getVoltageUsage())) {
 
-          System.out.println(name + "has enough battery voltage to move.");
+          System.out.println(name + " has enough battery voltage to move.");
 
           System.out.println(
               name + " is ready to move from " + currentDegree + " deg to " + targetDegree
@@ -69,7 +69,7 @@ public class Motor {
           moved = true;
 
         }else{
-          System.out.println(name + "doesn't have enough battery voltage to move.");
+          System.out.println(name + " doesn't have enough battery voltage to move.");
         }
       }
     return moved;

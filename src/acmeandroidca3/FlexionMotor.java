@@ -18,7 +18,7 @@ public class FlexionMotor extends Motor {
 
 
         if(Battery.isDischargable(this.getVoltageUsage())) {
-          System.out.println(name + "has enough battery voltage to bend.");
+          System.out.println(name + " has enough battery voltage to bend.");
           System.out.println(
               name + " is ready to bend from " + currentDegree + " deg to " + targetDegree
                   + " deg");
@@ -29,7 +29,7 @@ public class FlexionMotor extends Motor {
           Battery.discharge(this.getVoltageUsage());
           bended = true;
         }else{
-          System.out.println(name + "doesn't have enough battery voltage to bend.");
+          System.out.println(name + " doesn't have enough battery voltage to bend.");
         }
       }
      return bended;
