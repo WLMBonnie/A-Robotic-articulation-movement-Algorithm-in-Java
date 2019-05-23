@@ -48,7 +48,9 @@ public class MotorRunner extends Thread {
           }
         }
 
+        /* To exit the thread when the steps have been done (the lines are for debugging)
 
+        */
         System.out.println(motor.getName() + " movement done? " + motor.isMovementDone());
         isAllDone = isAllDone && motor.isMovementDone();
 

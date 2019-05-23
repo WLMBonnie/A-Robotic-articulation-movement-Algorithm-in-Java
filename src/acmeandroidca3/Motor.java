@@ -8,7 +8,8 @@ package acmeandroidca3;
 
 
 /**
- *
+ * A class to define the motors
+ * 
  * @author WailuiMa
  */
 
