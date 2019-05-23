@@ -1,11 +1,23 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package acmeandroidca3;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ *  
+ * @author WailuiMa
+ */
+
 public class AndroidRunner extends Thread {
 
-  private List<MotorsRunner> motorsRunners = new ArrayList<MotorsRunner>();
+  private List<MotorRunner> motorsRunners = new ArrayList<MotorRunner>();
 
   @Override
   public void run() {
@@ -13,6 +25,9 @@ public class AndroidRunner extends Thread {
     boolean working = true;
     while (working) {
 
+        /*
+        To stop application's execution once all the motors have run
+        */
 
       for (int i = 0; i < motorsRunners.size(); i++) {
         motorsAreRunning = motorsAreRunning && motorsRunners.get(i).isAlive();
@@ -33,7 +48,7 @@ public class AndroidRunner extends Thread {
 
   }
 
-  public List<MotorsRunner> getMotorRunners() {
+  public List<MotorRunner> getMotorRunners() {
     return motorsRunners;
   }
 }

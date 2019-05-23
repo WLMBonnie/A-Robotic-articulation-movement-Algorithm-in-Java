@@ -1,9 +1,23 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package acmeandroidca3;
+
+
+/**
+ *
+ * @author WailuiMa
+ */
 
 public class Main {
 
     public static void main(String[] args) {
 
+/* Android articulations: Android joints/parts with degree and required voltages:
+*/
         Battery.setCurrentVoltage(8);
         Motor hip = new Motor("hip", 90, 4);
         Motor knee = new Motor("knee", 90, 3);
@@ -20,7 +34,7 @@ public class Main {
         waist.initMovement(0,0);
         waist.initFlexion(0, 45);
 
-        MotorsRunner motorsRunner = new MotorsRunner();
+        MotorRunner motorsRunner = new MotorRunner();
         motorsRunner.getMotorList().add(waist);
         motorsRunner.getMotorList().add(hip);
         motorsRunner.getMotorList().add(knee);
