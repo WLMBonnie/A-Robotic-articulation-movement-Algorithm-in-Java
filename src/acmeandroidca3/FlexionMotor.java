@@ -20,7 +20,7 @@ public class FlexionMotor extends Motor {
         if(Battery.isDischargable(this.getVoltageUsage())) {
           System.out.println(name + " has enough battery voltage to bend.");
           System.out.println(
-              name + " is ready to bend from " + currentDegree + " deg to " + targetDegree
+              name + " is ready to bend from " + currentFlexionDegree + " deg to " + targetFlexionDegree
                   + " deg");
           int newCurrentDeg = currentFlexionDegree + maxDegreePerSecond;
           System.out.println(
