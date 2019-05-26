@@ -6,13 +6,14 @@
 package acmeandroidca3;
 
 /**
- *
+ * to define the movement of rotations
+ * 
  * @author WailuiMa
  */
-public class MoveMovement extends MotorMovement{
+public class RotationMovement extends MotorMovement{
 
 
-    public MoveMovement(Motor motor, int movementDegree, String action) {
+    public RotationMovement(Motor motor, int movementDegree, String action) {
       super(motor, movementDegree, action);
     }
 

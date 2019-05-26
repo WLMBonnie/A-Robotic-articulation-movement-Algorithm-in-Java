@@ -7,7 +7,7 @@ package acmeandroidca3;
 
 /**
  *
- * Walking Gait
+ * Walking Gait reference:
  * https://www.youtube.com/watch?v=QAnEhz6Eqn4
  * 
  * @author WailuiMa
@@ -34,14 +34,14 @@ public class Main {
 
         /* To set a series of movement, with the detail of the joints/parts (motors) name, the target degree/position, and the description the movement.
          */
-        MoveMovement lowerLeftHip = new MoveMovement(leftHip, 20, "lower left Hip");
+        RotationMovement lowerLeftHip = new RotationMovement(leftHip, 20, "lower left Hip");
 //        lowerLeftHip.initMovement();
-        MoveMovement lowerRightHip = new MoveMovement(rightHip, 20, "lower right Hip");
+        RotationMovement lowerRightHip = new RotationMovement(rightHip, 20, "lower right Hip");
 //        lowerRightHip.initMovement();
-        MoveMovement straightenLeftKnee = new MoveMovement(leftKnee, 0, "straighten Left Knee");
+        RotationMovement straightenLeftKnee = new RotationMovement(leftKnee, 0, "straighten Left Knee");
 //        straightenLeftKnee.initMovement();
 
-        MoveMovement straightenRightKnee = new MoveMovement(rightKnee, 0, "straighten Right Knee");
+        RotationMovement straightenRightKnee = new RotationMovement(rightKnee, 0, "straighten Right Knee");
 
 //        straightenRightKnee.initMovement();
 
@@ -66,12 +66,12 @@ public class Main {
        
         MotorRunner walkMotorsRunner = new MotorRunner("Walk");
         
-        MoveMovement walkInitialContactHip = new MoveMovement(leftHip, 40, "initial contact left hip");
-        MoveMovement walkInitialContactLeftKnee = new MoveMovement(leftKnee, 0, "loading response left knee");
-        MoveMovement walkInitialContacteLeftAnkle = new MoveMovement(leftAnkle, 15, "loading response left ankle");
-        MoveMovement walkPreSwingRightHip = new MoveMovement(rightHip, 10, "preswing right hip");
-        MoveMovement walkPreSwingRightKnee = new MoveMovement(rightKnee, 40, "preswing right knee");
-        MoveMovement walkPreSwingRightAnkle = new MoveMovement(rightAnkle, 30, "preswing right ankle");
+        RotationMovement walkInitialContactHip = new RotationMovement(leftHip, 40, "initial contact left hip");
+        RotationMovement walkInitialContactLeftKnee = new RotationMovement(leftKnee, 0, "loading response left knee");
+        RotationMovement walkInitialContacteLeftAnkle = new RotationMovement(leftAnkle, 15, "loading response left ankle");
+        RotationMovement walkPreSwingRightHip = new RotationMovement(rightHip, 10, "preswing right hip");
+        RotationMovement walkPreSwingRightKnee = new RotationMovement(rightKnee, 40, "preswing right knee");
+        RotationMovement walkPreSwingRightAnkle = new RotationMovement(rightAnkle, 30, "preswing right ankle");
         
         
         walkMotorsRunner.addMovement(walkInitialContactHip);
@@ -82,12 +82,12 @@ public class Main {
         walkMotorsRunner.addMovement(walkPreSwingRightAnkle);
         
         
-        MoveMovement walkLoadingResponseLeftHip = new MoveMovement(leftHip, 40, "loading response left hip");
-        MoveMovement walkLoadingResponseLeftKnee = new MoveMovement(leftKnee, 20, "loading response left knee");
-        MoveMovement walkLoadingResponseLeftAnkle = new MoveMovement(leftAnkle, 20, "loading response left ankle");
-        MoveMovement walkInitialSwingRightHip = new MoveMovement(rightHip, 35, "initial swing right hip");
-        MoveMovement walkInitialSwingRightKnee = new MoveMovement(rightKnee, 60, "initial swing right knee");
-        MoveMovement walkInitialSwingRightAnkle = new MoveMovement(rightAnkle, 20, "initial swing right ankle");
+        RotationMovement walkLoadingResponseLeftHip = new RotationMovement(leftHip, 40, "loading response left hip");
+        RotationMovement walkLoadingResponseLeftKnee = new RotationMovement(leftKnee, 20, "loading response left knee");
+        RotationMovement walkLoadingResponseLeftAnkle = new RotationMovement(leftAnkle, 20, "loading response left ankle");
+        RotationMovement walkInitialSwingRightHip = new RotationMovement(rightHip, 35, "initial swing right hip");
+        RotationMovement walkInitialSwingRightKnee = new RotationMovement(rightKnee, 60, "initial swing right knee");
+        RotationMovement walkInitialSwingRightAnkle = new RotationMovement(rightAnkle, 20, "initial swing right ankle");
         
         
         walkMotorsRunner.addMovement(walkLoadingResponseLeftHip);
@@ -99,12 +99,12 @@ public class Main {
         
        
         
-        MoveMovement walkMidStanceLeftHip = new MoveMovement(leftHip, 20, "mid stance left hip");
-        MoveMovement walkMidStanceLeftKnee = new MoveMovement(leftKnee, 5, "mid stance left knee");
-        MoveMovement walkMidStanceLeftAnkle = new MoveMovement(leftAnkle, 10, "mid stance left ankle");
-        MoveMovement walkMidSwingRightHip = new MoveMovement(rightHip, 45, "mid swing right hip");
-        MoveMovement walkMidSwingRightKnee = new MoveMovement(rightKnee, 25, "mid swing right knee");
-        MoveMovement walkMidSwingRightAnkle = new MoveMovement(rightAnkle, 15, "mid stance right ankle");
+        RotationMovement walkMidStanceLeftHip = new RotationMovement(leftHip, 20, "mid stance left hip");
+        RotationMovement walkMidStanceLeftKnee = new RotationMovement(leftKnee, 5, "mid stance left knee");
+        RotationMovement walkMidStanceLeftAnkle = new RotationMovement(leftAnkle, 10, "mid stance left ankle");
+        RotationMovement walkMidSwingRightHip = new RotationMovement(rightHip, 45, "mid swing right hip");
+        RotationMovement walkMidSwingRightKnee = new RotationMovement(rightKnee, 25, "mid swing right knee");
+        RotationMovement walkMidSwingRightAnkle = new RotationMovement(rightAnkle, 15, "mid stance right ankle");
         
         walkMotorsRunner.addMovement(walkMidStanceLeftHip);
         walkMotorsRunner.addMovement(walkMidStanceLeftKnee);
@@ -114,12 +114,12 @@ public class Main {
         walkMotorsRunner.addMovement(walkMidSwingRightAnkle);
         
         
-        MoveMovement walkTerminalStanceLeftHip = new MoveMovement(leftHip, 0, "terminal stance left hip");
-        MoveMovement walkTerminalStanceLeftKnee = new MoveMovement(leftKnee, 0, "terminal stance left knee");
-        MoveMovement walkTerminalStanceLeftAnkle = new MoveMovement(leftAnkle, 5, "terminal stance left ankle");
-        MoveMovement walkTerminalSwingRightHip = new MoveMovement(rightHip, 40, "Terminal swing right hip");
-        MoveMovement walkTerminalSwingRightKnee = new MoveMovement(rightKnee, 0, "Terminal swing right knee");
-        MoveMovement walkTerminalSwingRightAnkle = new MoveMovement(rightAnkle, 15, "Terminal stance right ankle");
+        RotationMovement walkTerminalStanceLeftHip = new RotationMovement(leftHip, 0, "terminal stance left hip");
+        RotationMovement walkTerminalStanceLeftKnee = new RotationMovement(leftKnee, 0, "terminal stance left knee");
+        RotationMovement walkTerminalStanceLeftAnkle = new RotationMovement(leftAnkle, 5, "terminal stance left ankle");
+        RotationMovement walkTerminalSwingRightHip = new RotationMovement(rightHip, 40, "Terminal swing right hip");
+        RotationMovement walkTerminalSwingRightKnee = new RotationMovement(rightKnee, 0, "Terminal swing right knee");
+        RotationMovement walkTerminalSwingRightAnkle = new RotationMovement(rightAnkle, 15, "Terminal stance right ankle");
         
         walkMotorsRunner.addMovement(walkTerminalStanceLeftHip);
         walkMotorsRunner.addMovement(walkTerminalStanceLeftKnee);
@@ -130,12 +130,12 @@ public class Main {
         
         
      
-        MoveMovement walkPreSwingLeftHip = new MoveMovement(leftHip, 10, "preswing left hip");
-        MoveMovement walkPreSwingLeftKnee = new MoveMovement(leftKnee, 40, "preswing left knee");
-        MoveMovement walkPreSwingLeftAnkle = new MoveMovement(leftAnkle, 30, "preswing left ankle");
-        MoveMovement walkInitialContactRightHip = new MoveMovement(rightHip, 40, "initial contact right hip");
-        MoveMovement walkInitialContactRightKnee = new MoveMovement(rightKnee, 0, "loading response right knee");
-        MoveMovement walkInitialContactRightAnkle = new MoveMovement(rightAnkle, 15, "loading response right ankle");
+        RotationMovement walkPreSwingLeftHip = new RotationMovement(leftHip, 10, "preswing left hip");
+        RotationMovement walkPreSwingLeftKnee = new RotationMovement(leftKnee, 40, "preswing left knee");
+        RotationMovement walkPreSwingLeftAnkle = new RotationMovement(leftAnkle, 30, "preswing left ankle");
+        RotationMovement walkInitialContactRightHip = new RotationMovement(rightHip, 40, "initial contact right hip");
+        RotationMovement walkInitialContactRightKnee = new RotationMovement(rightKnee, 0, "loading response right knee");
+        RotationMovement walkInitialContactRightAnkle = new RotationMovement(rightAnkle, 15, "loading response right ankle");
         
         walkMotorsRunner.addMovement(walkPreSwingLeftHip);
         walkMotorsRunner.addMovement(walkPreSwingLeftKnee);
@@ -145,12 +145,12 @@ public class Main {
         walkMotorsRunner.addMovement(walkInitialContactRightAnkle);
         
         
-        MoveMovement walkInitialSwingLeftHip = new MoveMovement(leftHip, 35, "initial swing left hip");
-        MoveMovement walkInitialSwingLeftKnee = new MoveMovement(leftKnee, 60, "initial swing left knee");
-        MoveMovement walkInitialSwingLeftAnkle = new MoveMovement(leftAnkle, 20, "initial swing left ankle");
-        MoveMovement walkLoadingResponseRighttHip = new MoveMovement(rightHip, 40, "loading response right hip");
-        MoveMovement walkLoadingResponseRightKnee = new MoveMovement(rightKnee, 20, "loading response right knee");
-        MoveMovement walkLoadingResponseRightAnkle = new MoveMovement(rightAnkle, 20, "loading response right ankle");
+        RotationMovement walkInitialSwingLeftHip = new RotationMovement(leftHip, 35, "initial swing left hip");
+        RotationMovement walkInitialSwingLeftKnee = new RotationMovement(leftKnee, 60, "initial swing left knee");
+        RotationMovement walkInitialSwingLeftAnkle = new RotationMovement(leftAnkle, 20, "initial swing left ankle");
+        RotationMovement walkLoadingResponseRighttHip = new RotationMovement(rightHip, 40, "loading response right hip");
+        RotationMovement walkLoadingResponseRightKnee = new RotationMovement(rightKnee, 20, "loading response right knee");
+        RotationMovement walkLoadingResponseRightAnkle = new RotationMovement(rightAnkle, 20, "loading response right ankle");
         
         walkMotorsRunner.addMovement(walkInitialSwingLeftHip);
         walkMotorsRunner.addMovement(walkInitialSwingLeftKnee);
@@ -160,12 +160,12 @@ public class Main {
         walkMotorsRunner.addMovement(walkLoadingResponseRightAnkle);
         
         
-        MoveMovement walkMidSwingLeftHip = new MoveMovement(leftHip, 45, "mid swing left hip");
-        MoveMovement walkMidSwingLeftKnee = new MoveMovement(leftKnee, 25, "mid swing left knee");
-        MoveMovement walkMidSwingLeftAnkle = new MoveMovement(leftAnkle, 15, "mid stance left ankle");
-        MoveMovement walkMidStanceRightHip = new MoveMovement(rightHip, 20, "mid stance right hip");
-        MoveMovement walkMidStanceRightKnee = new MoveMovement(rightKnee, 5, "mid stance right knee");
-        MoveMovement walkMidStanceRightAnkle = new MoveMovement(rightAnkle, 10, "mid stance right ankle");
+        RotationMovement walkMidSwingLeftHip = new RotationMovement(leftHip, 45, "mid swing left hip");
+        RotationMovement walkMidSwingLeftKnee = new RotationMovement(leftKnee, 25, "mid swing left knee");
+        RotationMovement walkMidSwingLeftAnkle = new RotationMovement(leftAnkle, 15, "mid stance left ankle");
+        RotationMovement walkMidStanceRightHip = new RotationMovement(rightHip, 20, "mid stance right hip");
+        RotationMovement walkMidStanceRightKnee = new RotationMovement(rightKnee, 5, "mid stance right knee");
+        RotationMovement walkMidStanceRightAnkle = new RotationMovement(rightAnkle, 10, "mid stance right ankle");
         
         walkMotorsRunner.addMovement(walkMidSwingLeftHip);
         walkMotorsRunner.addMovement(walkMidSwingLeftKnee);
@@ -174,12 +174,12 @@ public class Main {
         walkMotorsRunner.addMovement(walkMidStanceRightKnee);
         walkMotorsRunner.addMovement(walkMidStanceRightAnkle);
         
-        MoveMovement walkTerminalSwingLeftHip = new MoveMovement(leftHip, 40, "Terminal swing left hip");
-        MoveMovement walkTerminalSwingLeftKnee = new MoveMovement(leftKnee, 0, "Terminal swing left knee");
-        MoveMovement walkTerminalSwingLeftAnkle = new MoveMovement(leftAnkle, 15, "Terminal stance left ankle");
-        MoveMovement walkTerminalStanceRightHip = new MoveMovement(rightHip, 0, "terminal stance right hip");
-        MoveMovement walkTerminalStanceRightKnee = new MoveMovement(rightKnee, 0, "terminal stance right knee");
-        MoveMovement walkTerminalStanceRightAnkle = new MoveMovement(rightAnkle, 5, "terminal stance right ankle");
+        RotationMovement walkTerminalSwingLeftHip = new RotationMovement(leftHip, 40, "Terminal swing left hip");
+        RotationMovement walkTerminalSwingLeftKnee = new RotationMovement(leftKnee, 0, "Terminal swing left knee");
+        RotationMovement walkTerminalSwingLeftAnkle = new RotationMovement(leftAnkle, 15, "Terminal stance left ankle");
+        RotationMovement walkTerminalStanceRightHip = new RotationMovement(rightHip, 0, "terminal stance right hip");
+        RotationMovement walkTerminalStanceRightKnee = new RotationMovement(rightKnee, 0, "terminal stance right knee");
+        RotationMovement walkTerminalStanceRightAnkle = new RotationMovement(rightAnkle, 5, "terminal stance right ankle");
         
         walkMotorsRunner.addMovement(walkTerminalSwingLeftHip);
         walkMotorsRunner.addMovement(walkTerminalSwingLeftKnee);
@@ -188,12 +188,12 @@ public class Main {
         walkMotorsRunner.addMovement(walkTerminalStanceRightKnee);
         walkMotorsRunner.addMovement(walkTerminalStanceRightAnkle);
         
-        MoveMovement walkStopLeftHip = new MoveMovement(leftHip, 20, "return to stand pose left hip");
-        MoveMovement walkStopLeftKnee = new MoveMovement(leftKnee, 0, "return to stand pose left knee");
-        MoveMovement walkStopSwingLeftAnkle = new MoveMovement(leftAnkle, 15, "return to stand pose left ankle");
-        MoveMovement walkStopRightHip = new MoveMovement(rightHip, 20, "return to stand posee right hip");
-        MoveMovement walkStopRightKnee = new MoveMovement(rightKnee, 0, "return to stand pose right knee");
-        MoveMovement walkStopeRightAnkle = new MoveMovement(rightAnkle, 15, "return to stand pose right ankle");
+        RotationMovement walkStopLeftHip = new RotationMovement(leftHip, 20, "return to stand pose left hip");
+        RotationMovement walkStopLeftKnee = new RotationMovement(leftKnee, 0, "return to stand pose left knee");
+        RotationMovement walkStopSwingLeftAnkle = new RotationMovement(leftAnkle, 15, "return to stand pose left ankle");
+        RotationMovement walkStopRightHip = new RotationMovement(rightHip, 20, "return to stand posee right hip");
+        RotationMovement walkStopRightKnee = new RotationMovement(rightKnee, 0, "return to stand pose right knee");
+        RotationMovement walkStopeRightAnkle = new RotationMovement(rightAnkle, 15, "return to stand pose right ankle");
     
         walkMotorsRunner.addMovement(walkStopLeftHip);
         walkMotorsRunner.addMovement(walkStopLeftKnee);
@@ -205,10 +205,10 @@ public class Main {
         
         MotorRunner sitDownMotorsRunner = new MotorRunner("Sit down");
         FlexionMovement siLeanForwardBody = new FlexionMovement(waist, 30, "sit down lean Forward Body");
-        MoveMovement sitLowerLeftHip = new MoveMovement(leftHip, 70, "sit down lower left Hip");
-        MoveMovement sitLowerRightHip = new MoveMovement(rightHip, 70, "sit down lower right Hip");
-        MoveMovement sitBendLeftKnee = new MoveMovement(leftKnee, 70, "sit down bend Left Knee");
-        MoveMovement sitBendRightKnee = new MoveMovement(rightKnee,70, "sit down bend Right Knee");
+        RotationMovement sitLowerLeftHip = new RotationMovement(leftHip, 70, "sit down lower left Hip");
+        RotationMovement sitLowerRightHip = new RotationMovement(rightHip, 70, "sit down lower right Hip");
+        RotationMovement sitBendLeftKnee = new RotationMovement(leftKnee, 70, "sit down bend Left Knee");
+        RotationMovement sitBendRightKnee = new RotationMovement(rightKnee,70, "sit down bend Right Knee");
         FlexionMovement sitLeanBackwardBody = new FlexionMovement(waist, 0, "sit down lean Backward Body");
         sitDownMotorsRunner.addMovement(siLeanForwardBody);
         sitDownMotorsRunner.addMovement(sitLowerLeftHip);

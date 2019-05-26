@@ -6,7 +6,7 @@
 package acmeandroidca3;
 
 /**
- *
+ * To define the flexion degree of each motor
  *
  * @author WailuiMa
  */

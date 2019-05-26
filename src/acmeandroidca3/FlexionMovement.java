@@ -5,8 +5,9 @@
  */
 package acmeandroidca3;
 
-/**
- *
+/** 
+ * To define the movement of flexion
+ * 
  * @author WailuiMa
  */
 public class FlexionMovement extends MotorMovement{
