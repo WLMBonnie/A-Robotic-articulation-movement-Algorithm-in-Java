@@ -55,6 +55,8 @@ public class Battery {
       }
       System.out.println("*** Battery recharged from " + currentVoltage + "v to " + newVoltage + "v ***");
       currentVoltage = (int)Math.round(newVoltage);
+    }else{
+        System.out.println("*** Battery is fully charged at " + currentVoltage + "v");
     }
   }
 

@@ -17,6 +17,7 @@ public class Motor {
     protected final int maxDegreePerSecond = 15;
     String name;
     int maxMovementDegree;
+    int defaultVoltageUsage;
     int voltageUsage;
     int initDegree;
     int currentDegree;
@@ -25,12 +26,13 @@ public class Motor {
 
     /* The motor's name, the initial position/degree, the maximum movement degrees, the voltage it consumes during a movement 
     */
-    public Motor(String name, int initDegree, int maxMovementDegree, int voltageUsage) {
+    public Motor(String name, int initDegree, int maxMovementDegree, int defaultVoltageUsage) {
         this.name = name;
         this.initDegree = initDegree;
         this.currentDegree = initDegree;
         this.maxMovementDegree = maxMovementDegree;
-        this.voltageUsage = voltageUsage;
+        this.defaultVoltageUsage = defaultVoltageUsage;
+        this.voltageUsage = defaultVoltageUsage;
     }
 
     public int getInitDegree() {
@@ -53,13 +55,14 @@ public class Motor {
         this.maxMovementDegree = maxMovementDegree;
     }
 
+     public int getDefaultVoltageUsage() {
+        return defaultVoltageUsage;
+    }
+      
     public int getVoltageUsage() {
         return voltageUsage;
     }
 
-    public void setVoltageUsage(int voltageUsage) {
-        this.voltageUsage = voltageUsage;
-    }
 
     /* each motor uses a max of 4 volts per second to operate and can move 15 degrees per second (see the main method)- 
     if movement is more than 60% of available motion for a motor an additional 3 volts are required.
@@ -68,7 +71,9 @@ public class Motor {
 
         this.targetDegree = targetDegree;
         if (Math.abs(targetDegree - currentDegree) > (maxMovementDegree * 0.6)) {
-            voltageUsage += 3;
+           voltageUsage = defaultVoltageUsage + 3;
+        }else{
+            voltageUsage = defaultVoltageUsage;
         }
         
         /* When the current degree is 0° and the target degree is 90°, then it is adding the degree (addDeg = true). Then the current degree is 15°/s.
@@ -107,7 +112,10 @@ public class Motor {
 
             if (addDeg) {
 
+             
                 int newCurrentDeg = currentDegree + maxDegreePerSecond;
+                if(newCurrentDeg > targetDegree)
+                    newCurrentDeg = targetDegree;
 
                 System.out
                         .println(name + " moved from " + currentDegree + " deg to " + newCurrentDeg + " deg");
@@ -115,6 +123,8 @@ public class Motor {
                 currentDegree = newCurrentDeg;
             } else {
                 int newCurrentDeg = currentDegree - maxDegreePerSecond;
+                if(newCurrentDeg < targetDegree)
+                    newCurrentDeg = targetDegree;
 
                 System.out
                         .println(name + " moved from " + currentDegree + " deg to " + newCurrentDeg + " deg");
@@ -128,7 +138,7 @@ public class Motor {
             moved = true;
 
         } else {
-            System.out.println(name + " doesn't have enough battery voltage to move.");
+            System.out.println(name + " doesn't have enough battery voltage to move. it needs " + this.getVoltageUsage() + "v and current battery is " + Battery.getCurrentVoltage() + "v");
         }
 
         return moved;

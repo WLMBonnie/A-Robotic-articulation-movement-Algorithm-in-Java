@@ -37,11 +37,17 @@ public class FlexionMotor extends Motor {
 
             if (addDeg) {
                 int newCurrentDeg = currentFlexionDegree + maxDegreePerSecond;
+                 if(newCurrentDeg > targetFlexionDegree)
+                    newCurrentDeg = targetFlexionDegree;
+                 
                 System.out.println(
                         name + " bended from " + currentFlexionDegree + " deg to " + newCurrentDeg + " deg");
                 currentFlexionDegree = newCurrentDeg;
             } else {
                 int newCurrentDeg = currentFlexionDegree - maxDegreePerSecond;
+                if(newCurrentDeg < targetFlexionDegree)
+                    newCurrentDeg = targetFlexionDegree;
+                    
                 System.out.println(
                         name + " bended from " + currentFlexionDegree + " deg to " + newCurrentDeg + " deg");
                 currentFlexionDegree = newCurrentDeg;
@@ -58,7 +64,7 @@ public class FlexionMotor extends Motor {
 
         this.targetFlexionDegree = targetFlexionDegree;
         if ((Math.abs(targetFlexionDegree - currentFlexionDegree)) > (maxFlexionDegree * 0.6)) {
-            voltageUsage += 3;
+            defaultVoltageUsage += 3;
         }
 
         if (currentFlexionDegree < targetFlexionDegree) {
