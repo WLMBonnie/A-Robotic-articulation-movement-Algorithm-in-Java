@@ -28,7 +28,7 @@ public class Battery {
 
   public static synchronized int discharge(int voltage){
     int newVoltage = currentVoltage - voltage;
-    System.out.println("Battery discharged from " + currentVoltage + "v to " + newVoltage + "v");
+    System.out.println("*** Battery discharged from " + currentVoltage + "v to " + newVoltage + "v ***");
     currentVoltage = newVoltage;
     return currentVoltage;
   }
@@ -40,7 +40,7 @@ public class Battery {
 
     }else {
       dischargable = false;
-      System.out.println("Battery doesn't have engugh voltage to move.");
+      //System.out.println("Battery doesn't have engugh voltage to move.");
     }
 
     return dischargable;
@@ -53,7 +53,7 @@ public class Battery {
       if(newVoltage > capacity){
         newVoltage = capacity;
       }
-      System.out.println("Battery recharged from " + currentVoltage + "v to " + newVoltage + "v");
+      System.out.println("*** Battery recharged from " + currentVoltage + "v to " + newVoltage + "v ***");
       currentVoltage = (int)Math.round(newVoltage);
     }
   }

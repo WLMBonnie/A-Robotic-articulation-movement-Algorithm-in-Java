@@ -3,60 +3,81 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package acmeandroidca3;
-
 
 /**
  *
  * @author WailuiMa
  */
-
 public class Main {
 
     public static void main(String[] args) {
 
-/* Android articulations: Android joints/parts with degree and required voltages:
-*/
+        /* Android articulations: The motor's name, the initial position/degree, the maximum movement degrees, the voltage it consumes during a movement 
+         */
         Battery.setCurrentVoltage(8);
-        Motor hip = new Motor("hip", 90, 4);
-        Motor knee = new Motor("knee", 90, 3);
-        FlexionMotor waist = new FlexionMotor("waist", 30, 90, 4);
+        Motor lefHip = new Motor("left hip", 90, 90, 4);
+        Motor rightHip = new Motor("right hip", 90, 90, 4);
+        Motor leftKnee = new Motor("left knee", 90, 90, 3);
+        Motor rightKnee = new Motor("right knee", 90, 90, 3);
+        FlexionMotor waist = new FlexionMotor("waist", 0, 30, 0, 90, 4);
 
         BatteryRunner batteryRunner = new BatteryRunner();
-        batteryRunner.setPriority(1);
+//        batteryRunner.setPriority(1);
         batteryRunner.start();
 
-        hip.initMovement(0, 90);
+        /* To set a series of movement, with the detail of the joints/parts (motors) name, the target degree/position, and the description the movement.
+         */
+        MoveMovement lowerLeftHip = new MoveMovement(lefHip, 0, "lower left Hip");
+        lowerLeftHip.initMovement();
+        MoveMovement lowerRightHip = new MoveMovement(rightHip, 0, "lower right Hip");
+        lowerRightHip.initMovement();
+        MoveMovement straightenLeftKnee = new MoveMovement(leftKnee, 0, "straighten Left Knee");
+        straightenLeftKnee.initMovement();
 
-        knee.initMovement(0, 90);
+        MoveMovement straightenRightKnee = new MoveMovement(rightKnee, 0, "straighten Right Knee");
 
-        waist.initMovement(0,0);
-        waist.initFlexion(0, 45);
+        straightenRightKnee.initMovement();
 
-        MotorRunner motorsRunner = new MotorRunner();
-        motorsRunner.getMotorList().add(waist);
-        motorsRunner.getMotorList().add(hip);
-        motorsRunner.getMotorList().add(knee);
+        FlexionMovement leanForwardBody = new FlexionMovement(waist, 45, "lean Forward Body");
+        leanForwardBody.initMovement();
+        FlexionMovement leanBackwardBody = new FlexionMovement(waist, 0, "lean Backward Body");
+
+        /* 
+         Start a MotorRunner thread to execute all the desired mvoements
+       
+         */
+        MotorRunner standUpMotorsRunner = new MotorRunner("Stand up");
+        standUpMotorsRunner.addMovement(lowerLeftHip);
+        standUpMotorsRunner.addMovement(lowerRightHip);
+        standUpMotorsRunner.addMovement(straightenLeftKnee);
+        standUpMotorsRunner.addMovement(straightenRightKnee);
+        standUpMotorsRunner.addMovement(leanForwardBody);
+        standUpMotorsRunner.addMovement(leanBackwardBody);
+        standUpMotorsRunner.start();
+
+        MotorRunner walkMotorsRunner = new MotorRunner("Walk");
+        MoveMovement walkRaiseLeftHip = new MoveMovement(lefHip, 30, "raise left Hip");
+
+        MoveMovement walkLowerLeftHip = new MoveMovement(lefHip, 0, "lower left Hip");
 
 
-        motorsRunner.start();
+        MoveMovement walkRaiseRightHip = new MoveMovement(rightHip, 30, "raise right hip");
 
-//        MotorRunner hipRunner = new MotorRunner("Hip", hip);
-//        hipRunner.start();
-//
-//        knee.setCurrentDegree(0);
-//        knee.setTargetDegree(90);
-//        MotorRunner kneeRunner = new MotorRunner("Knee", knee, battery);
-//        kneeRunner.start();
+        MoveMovement walklowerRightHip = new MoveMovement(rightHip, 0, "lower right Hip");
+
+
+        walkMotorsRunner.addMovement(walkRaiseLeftHip);
+        walkMotorsRunner.addMovement(walkLowerLeftHip);
+        walkMotorsRunner.addMovement(walkRaiseRightHip);
+        walkMotorsRunner.addMovement(walklowerRightHip);
 
         AndroidRunner androidRunner = new AndroidRunner();
-        androidRunner.getMotorRunners().add(motorsRunner);
+        androidRunner.getMotorRunners().add(standUpMotorsRunner);
+        androidRunner.getMotorRunners().add(walkMotorsRunner);
 
         androidRunner.start();
 
-
     }
-
 
 }

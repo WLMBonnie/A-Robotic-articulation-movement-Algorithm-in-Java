@@ -3,102 +3,136 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package acmeandroidca3;
-
 
 /**
  * A class to define the motors
- * 
+ *
  * @author WailuiMa
  */
-
 public class Motor {
 
-  protected final int maxDegreePerSecond = 15;
-  String name;
-  int maxMovementDegree;
-  int voltageUsage;
-  int currentDegree;
-  int targetDegree;
+    /* A motor can move at most 15 degrees per second
+    */ 
+    protected final int maxDegreePerSecond = 15;
+    String name;
+    int maxMovementDegree;
+    int voltageUsage;
+    int initDegree;
+    int currentDegree;
+    int targetDegree;
+    private boolean addDeg;
 
-  public Motor(String name, int moveDegree, int voltageUsage){
-    this.name = name;
-    this.maxMovementDegree = moveDegree;
-    this.voltageUsage = voltageUsage;
-  }
-
-  public int getMaxMovementDegree() {
-    return maxMovementDegree;
-  }
-
-  public void setMaxMovementDegree(int maxMovementDegree) {
-    this.maxMovementDegree = maxMovementDegree;
-  }
-
-  public int getVoltageUsage() {
-    return voltageUsage;
-  }
-
-  public void setVoltageUsage(int voltageUsage) {
-    this.voltageUsage = voltageUsage;
-  }
-
-  public void initMovement(int currentDegree, int targetDegree){
-    this.currentDegree = currentDegree;
-    this.targetDegree = targetDegree;
-    if((targetDegree - currentDegree) > (maxMovementDegree * 0.6)){
-      voltageUsage += 3;
+    /* The motor's name, the initial position/degree, the maximum movement degrees, the voltage it consumes during a movement 
+    */
+    public Motor(String name, int initDegree, int maxMovementDegree, int voltageUsage) {
+        this.name = name;
+        this.initDegree = initDegree;
+        this.currentDegree = initDegree;
+        this.maxMovementDegree = maxMovementDegree;
+        this.voltageUsage = voltageUsage;
     }
-  }
 
-  public String getName() {
-    return name;
-  }
+    public int getInitDegree() {
+        return this.initDegree;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public int getCurrentDegree() {
+        return this.currentDegree;
+    }
 
-  public boolean move(){
-    boolean moved = false;
+    public int getTargetDegree() {
+        return this.targetDegree;
+    }
 
-      if(currentDegree < targetDegree ){
+    public int getMaxMovementDegree() {
+        return maxMovementDegree;
+    }
 
-        if(Battery.isDischargable(this.getVoltageUsage())) {
+    public void setMaxMovementDegree(int maxMovementDegree) {
+        this.maxMovementDegree = maxMovementDegree;
+    }
 
-          System.out.println(name + " has enough battery voltage to move.");
+    public int getVoltageUsage() {
+        return voltageUsage;
+    }
 
-          System.out.println(
-              name + " is ready to move from " + currentDegree + " deg to " + targetDegree
-                  + " deg");
-          int newCurrentDeg = currentDegree + maxDegreePerSecond;
+    public void setVoltageUsage(int voltageUsage) {
+        this.voltageUsage = voltageUsage;
+    }
 
-          System.out
-              .println(name + " moved from " + currentDegree + " deg to " + newCurrentDeg + " deg");
+    /* each motor uses a max of 4 volts per second to operate and can move 15 degrees per second (see the main method)- 
+    if movement is more than 60% of available motion for a motor an additional 3 volts are required.
+    */
+    public void initMovement(int targetDegree) {
 
-          currentDegree = newCurrentDeg;
-          Battery.discharge(this.getVoltageUsage());
-          moved = true;
-
-        }else{
-          System.out.println(name + " doesn't have enough battery voltage to move.");
+        this.targetDegree = targetDegree;
+        if (Math.abs(targetDegree - currentDegree) > (maxMovementDegree * 0.6)) {
+            voltageUsage += 3;
         }
-      }
-    return moved;
+        
+        /* When the current degree is 0° and the target degree is 90°, then it is adding the degree (addDeg = true). Then the current degree is 15°/s.
+        Reversely, is not adding degree (add Deg = false)
+        */
 
-  }
+        if (currentDegree < targetDegree) {
+            addDeg = true;
+        } else {
+            addDeg = false;
+        }
 
-  public boolean isMovementDone(){
-
-    boolean done = false;
-    if(currentDegree == targetDegree){
-      done = true;
-    }else{
-      done = false;
     }
 
-    return done;
-  }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean move() {
+        boolean moved = false;
+        
+    /* To check if the battery has enough voltage to support a move. 
+       It's going to add or reduce the current degree according to the instruction
+    */
+
+        if (Battery.isDischargable(this.getVoltageUsage())) {
+
+            System.out.println(name + " has enough battery voltage to move.");
+              System.out.println(
+                        name + " is ready to move from " + currentDegree + " deg to " + targetDegree
+                        + " deg");
+
+            if (addDeg) {
+
+                int newCurrentDeg = currentDegree + maxDegreePerSecond;
+
+                System.out
+                        .println(name + " moved from " + currentDegree + " deg to " + newCurrentDeg + " deg");
+
+                currentDegree = newCurrentDeg;
+            } else {
+                int newCurrentDeg = currentDegree - maxDegreePerSecond;
+
+                System.out
+                        .println(name + " moved from " + currentDegree + " deg to " + newCurrentDeg + " deg");
+
+                currentDegree = newCurrentDeg;
+            }
+            
+            /* to discharge the voltage as the motor comsumes voltage          
+            */
+            Battery.discharge(this.getVoltageUsage());
+            moved = true;
+
+        } else {
+            System.out.println(name + " doesn't have enough battery voltage to move.");
+        }
+
+        return moved;
+
+    }
 
 }

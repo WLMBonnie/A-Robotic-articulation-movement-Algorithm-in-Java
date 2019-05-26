@@ -17,11 +17,11 @@ import java.util.List;
 
 public class AndroidRunner extends Thread {
 
-  private List<MotorRunner> motorsRunners = new ArrayList<MotorRunner>();
+  private List<MotorRunner> motorRunners = new ArrayList<MotorRunner>();
 
   @Override
   public void run() {
-    boolean motorsAreRunning = true;
+    boolean motorsAreFinished = true;
     boolean working = true;
     while (working) {
 
@@ -29,11 +29,27 @@ public class AndroidRunner extends Thread {
         To stop application's execution once all the motors have run
         */
 
-      for (int i = 0; i < motorsRunners.size(); i++) {
-        motorsAreRunning = motorsAreRunning && motorsRunners.get(i).isAlive();
+      for (int i = 0; i < motorRunners.size(); i++) {
+        if(motorRunners.get(i).isAlive()){
+            break;
+        }else{
+          if(i + 1 < motorRunners.size()){
+              MotorRunner nextRunner = motorRunners.get(i + 1);
+              nextRunner.initMovement();
+              nextRunner.start();
+              motorRunners.remove(i);
+              break;
+          }else if(motorRunners.size() == 1){
+            motorRunners.remove(i);
+          }
+        }
+            
       }
+      
+     
+    
 
-      if(!motorsAreRunning){
+      if(motorRunners.isEmpty()){
         working = false;
         System.exit(0);
       }
@@ -49,6 +65,6 @@ public class AndroidRunner extends Thread {
   }
 
   public List<MotorRunner> getMotorRunners() {
-    return motorsRunners;
+    return motorRunners;
   }
 }
