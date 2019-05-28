@@ -97,8 +97,7 @@ public class Main {
          */
         MotorRunner walkMotorsRunner = new MotorRunner("Walking");
        
-//        RotationMovement swingForwardLeftShoulder = new RotationMovement(leftShoulder, 190, "swing forward left shoulder");
-//        RotationMovement swingForwardRightShoulder = new RotationMovement(rightShoulder, 190, "swing forward right shoulder");
+
         
         RotationMovement walkInitialContactLeftHip = new RotationMovement(leftHip, 40, "initial contact left hip");
         RotationMovement walkInitialContactLeftKnee = new RotationMovement(leftKnee, 0, "loading response left knee");
@@ -324,13 +323,12 @@ public class Main {
         sitDownMotorsRunner.addMovement(sitBendLeftKnee);
         sitDownMotorsRunner.addMovement(sitBendRightKnee);
         sitDownMotorsRunner.addMovement(sitLeanBackwardBody);
-//        sitDownMotorsRunner.initMovement();
-//        sitDownMotorsRunner.start();
+
 
         AndroidRunner androidRunner = new AndroidRunner();
         androidRunner.getMotorRunners().add(standUpMotorsRunner);
-//        androidRunner.getMotorRunners().add(walkMotorsRunner);
-//        androidRunner.getMotorRunners().add(sitDownMotorsRunner);
+        androidRunner.getMotorRunners().add(walkMotorsRunner);
+        androidRunner.getMotorRunners().add(sitDownMotorsRunner);
 
         androidRunner.start();
 

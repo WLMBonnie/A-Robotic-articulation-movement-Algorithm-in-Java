@@ -55,6 +55,11 @@ public class Battery {
       if(newVoltage > capacity){
         newVoltage = capacity;
       }
+      /* In the requirement: 
+        The power plant is a cheap model of lithium battery from AndroidsRus and can only produce 8 volts,
+        its recovery time after discharging is 3 seconds.
+        Here the voltage has been round up as 2.66 volts per second, because 8/3 = 2.66
+      */
       System.out.println("*** Battery recharged from " + currentVoltage + "v to " + newVoltage + "v ***");
       currentVoltage = (int)Math.round(newVoltage);
     }else{

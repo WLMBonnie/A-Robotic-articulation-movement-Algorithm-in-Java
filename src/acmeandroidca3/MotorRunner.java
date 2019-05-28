@@ -33,7 +33,7 @@ public class MotorRunner extends Thread {
         Motor motor = null;
         boolean isAllDone;
         
-        System.out.println("------ Start " +  action + "  ------");
+        System.out.println("------ Start " +  action + "  ------\n");
         
         
         while (!finishedMove) {
@@ -52,7 +52,7 @@ public class MotorRunner extends Thread {
                     if (!movement.isMovementDone()) {
                         
                         
-                        if (motor instanceof FlexionMotor) {
+                        if (movement instanceof FlexionMovement && motor instanceof FlexionMotor) {
                              if (((FlexionMotor) motor).bend()) {
                                 keepMotorsInPlace();
                             }
@@ -97,7 +97,7 @@ public class MotorRunner extends Thread {
 
           
         
-        System.out.println("------ Finished " + action + "------");
+        System.out.println("------ Finished " + action + "------\n");
     }
 
     /* once a motor is moved the Android requires 1 volt to hold all motors in place(must always be 1 volt

@@ -42,13 +42,5 @@ public class RotationMovement extends MotorMovement{
     public boolean isReady() {
         return ready;
     }
-    
-    public boolean isDone(){
-       boolean done = true;
-//             System.out.println(motor.getName() + " movement done? " + isMovementDone());
-                done = done && isMovementDone();
-                
-            return done;
-    }
 
 }
