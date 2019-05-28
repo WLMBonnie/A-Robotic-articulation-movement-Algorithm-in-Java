@@ -6,7 +6,9 @@
 package acmeandroidca3;
 
 /** 
- * To define the movement of flexion
+ * This class is to define the movement of flexion;
+ * 
+ * Inheritance: FlexionMovement is a child class of MotoMovement
  * 
  * @author WailuiMa
  */

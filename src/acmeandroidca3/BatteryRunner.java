@@ -8,7 +8,7 @@ package acmeandroidca3;
 
 
 /**
- *
+ * This class for recharging the battery every second.
  * @author WailuiMa
  */
 

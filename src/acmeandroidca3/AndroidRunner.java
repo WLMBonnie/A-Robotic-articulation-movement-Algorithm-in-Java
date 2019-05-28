@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
+ * It's a thread to run a series of action.
  *  
  * @author WailuiMa
  */
@@ -26,7 +26,10 @@ public class AndroidRunner extends Thread {
     while (working) {
 
         /*
-        To stop application's execution once all the motors have run
+        To stop application's execution once all the motors have run.
+        The following code means: to check if the movements in the motorRunners has been done for each second.
+        If the movement of 'standing up' is done, then it will run the movement of 'walking', while these have been done,
+        it goes to run the last movement of 'sitting down'.
         */
 
       for (int i = 0; i < motorRunners.size(); i++) {

@@ -46,6 +46,8 @@ public class Battery {
     return dischargable;
   }
 
+  /* the synchronized method is to make sure this method will only be executed by one thread at the same time/concurrently
+  */
   public static synchronized void recharge(){
     if(currentVoltage < capacity){
       double newVoltage = currentVoltage + recoverRate;

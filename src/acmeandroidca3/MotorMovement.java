@@ -6,7 +6,8 @@
 package acmeandroidca3;
 
 /**
- * To 
+ * Inheritance: MotorMovement is the parent class of FlexionMovement and RotationMovement
+ * 
  * @author WailuiMa
  */
 public abstract class MotorMovement {

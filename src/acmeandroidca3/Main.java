@@ -6,7 +6,6 @@
 package acmeandroidca3;
 
 /**
- *
  * Walking Gait reference:
  * https://www.youtube.com/watch?v=QAnEhz6Eqn4
  * 
@@ -46,7 +45,7 @@ public class Main {
         Motor rightKnee = new Motor("right knee", 90, 90, 3);
         
         /* The flexion motor's name, the initial position/degree, the maximum movement degrees,
-                the initial Flexion Degree, the maximum Flexion Degree, the voltage it consumes during a movement 
+        the initial Flexion Degree, the maximum Flexion Degree, the voltage it consumes during a movement 
         */
         FlexionMotor waist = new FlexionMotor("waist", 0, 30, 0, 90, 4);      
         FlexionMotor head = new FlexionMotor("head", 90, 180, 90, 180, 3);
@@ -82,7 +81,7 @@ public class Main {
 
         /*  Start a MotorRunner thread to execute all the desired movements performed by the motors, in an action of standing up.   
          */
-        MotorRunner standUpMotorsRunner = new MotorRunner("Stand up");
+        MotorRunner standUpMotorsRunner = new MotorRunner("Standing up");
         standUpMotorsRunner.addMovement(lowerLeftHip);
         standUpMotorsRunner.addMovement(lowerRightHip);
         standUpMotorsRunner.addMovement(straightenLeftKnee);
@@ -96,7 +95,7 @@ public class Main {
          
         /*  Start a MotorRunner thread to execute all the desired movements performed by the motors, in an action of walking.   
          */
-        MotorRunner walkMotorsRunner = new MotorRunner("Walk");
+        MotorRunner walkMotorsRunner = new MotorRunner("Walking");
        
 //        RotationMovement swingForwardLeftShoulder = new RotationMovement(leftShoulder, 190, "swing forward left shoulder");
 //        RotationMovement swingForwardRightShoulder = new RotationMovement(rightShoulder, 190, "swing forward right shoulder");
@@ -312,7 +311,7 @@ public class Main {
         
         /*  Start a MotorRunner thread to execute all the desired movements performed by the motors, in an action of sitting down.   
          */
-        MotorRunner sitDownMotorsRunner = new MotorRunner("Sit down");
+        MotorRunner sitDownMotorsRunner = new MotorRunner("Sitting down");
         FlexionMovement siLeanForwardBody = new FlexionMovement(waist, 30, "sit down lean Forward Body");
         RotationMovement sitLowerLeftHip = new RotationMovement(leftHip, 70, "sit down lower left Hip");
         RotationMovement sitLowerRightHip = new RotationMovement(rightHip, 70, "sit down lower right Hip");

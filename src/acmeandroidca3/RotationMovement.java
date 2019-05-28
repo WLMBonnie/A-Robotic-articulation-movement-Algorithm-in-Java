@@ -8,6 +8,8 @@ package acmeandroidca3;
 /**
  * to define the movement of rotations
  * 
+ * Inheritance: RotationMovement is a child class of MotoMovement
+ * 
  * @author WailuiMa
  */
 public class RotationMovement extends MotorMovement{
